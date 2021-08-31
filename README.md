@@ -42,6 +42,24 @@
          * input-pipe.csv: 20 records in pipe delimited format.
          * input-space.csv: 20 records in space delimited format.
 
+# Running the command line parser.
+
+  ## Select one or more input files with the desired delimiter.
+    
+     #### Located at resources/samples
+        * input-comma.csv
+        * input-pipe.csv
+        * input-space.csv
+
+  ## Select a sort mode.
+    * option-1 - Records sorted by favorite color (ascending).
+    * option-2 - Records sorted by date-of-birth (ascending).
+    * option-3 - Records sorted by last name (descending).
+
+  ## Run the application.
+
+    clj -Acmdline -f <path-to-input-file> -f <path-to-input-file> ... option-N    
+
 # Running Test Cases.
 
   clj -Mtest
