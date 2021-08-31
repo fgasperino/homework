@@ -2,22 +2,41 @@
  {org.clojure/clojure {:mvn/version "1.10.3"}
   org.clojure/tools.cli {:mvn/version "1.0.206"}
   org.clojure/data.csv {:mvn/version "1.0.0"}
-  tick/tick {:mvn/version "0.5.0-RC1"}}
+  tick/tick {:mvn/version "0.5.0-RC1"}
+  ring/ring-core {:mvn/version "1.9.4"}
+  ring/ring-jetty-adapter {:mvn/version "1.9.4"}
+  compojure/compojure {:mvn/version "1.6.2"}}
 
  :paths ["src" :resource-paths]
 
  :aliases
-  {:test
+ {:cmdline
+  {:extra-paths ["config/cmdline" "env/cmdline"]
+   :resource-paths ["resources/cmdline"]
+   :main-opts ["-m" "com.rate.cmdline"]}
+  
+  :api-prod
+  {:extra-paths ["config/api" "env/api"]
+   :resource-paths ["resources/api"]
+   :main-opts ["-m" "com.rate.api.prod"]}
+  
+  :api-manual
+  {:extra-paths ["config/api" "env/api"]
+   :resource-paths ["resources/api"]}
+
+  :test
    {:extra-paths ["test" "config/test" "env/test"]
     :resource-paths ["resources/test"]
     :extra-deps {org.clojure/test.check {:mvn/version "1.1.0"}
                  lambdaisland/kaocha {:mvn/version "1.0.861"}}
     :main-opts ["-m" "kaocha.runner"]}
-   :dev
-   {:extra-paths ["test" "config/dev" "env/dev"]
-    :resource-paths ["resources/dev"]
-    :extra-deps {org.clojure/test.check {:mvn/version "1.1.0"}}}
 
-   :socket-repl
-   {:jvm-opts ["-Dclojure.server.repl={:port,9999,:accept,clojure.core.server/repl}"]}}}
+  :dev
+  {:extra-paths ["test" "config/dev" "env/dev"]
+   :resource-paths ["resources/dev"]
+   :extra-deps {org.clojure/test.check {:mvn/version "1.1.0"}
+                ring/ring-devel {:mvn/version "1.9.4"}}}
+
+  :socket-repl
+  {:jvm-opts ["-Dclojure.server.repl={:port,9999,:accept,clojure.core.server/repl}"]}}}
    
