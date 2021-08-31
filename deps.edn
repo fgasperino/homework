@@ -28,6 +28,7 @@
    {:extra-paths ["test" "config/test" "env/test"]
     :resource-paths ["resources/test"]
     :extra-deps {org.clojure/test.check {:mvn/version "1.1.0"}
+                 ring/ring-mock {:mvn/version "0.4.0"}
                  lambdaisland/kaocha {:mvn/version "1.0.861"}}
     :main-opts ["-m" "kaocha.runner"]}
 
