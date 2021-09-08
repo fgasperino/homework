@@ -24,7 +24,7 @@
        $ telnet localhost 9999
 
        user=> (in-ns 'com.rate.core)
-       com.rate.core=> (list-users)
+       com.rate.core=> (list-records)
        com.rate.core=> (list-sorted-by {:sort-fn :date-of-birth})
 
   ## Browse to one of 3 URI endpoints:
